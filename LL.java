@@ -7,7 +7,6 @@ public class LL {
     LL(){
         size= 0;                          //initial size
     }
-
     Node head;                            //define node
     class Node{
         String data;
@@ -20,7 +19,7 @@ public class LL {
     }
     public void addFirst(String data){
         Node newNode = new Node(data);
-        if(head == null){                           //corner case
+        if(head== null){                           //corner case
             head = newNode;
             return;
         }
@@ -51,13 +50,15 @@ public class LL {
         }
         System.out.println("Null");
     }
-    public void deleteFirst(){                              //delete
+    public void deleteFirst(){//delete
+        Node currNode= head;
         if(head == null){
             System.out.print("This is empty list");
             return;
         }
         size --;
-        head= head.next;
+        head= currNode.next;
+
 
     }
     public void deleteLast(){                       //  delete last node
@@ -95,16 +96,16 @@ public class LL {
         list.display();
         list.addLast("List");
         list.display();
+        list.deleteLast();
+        list.display();
 
 
-//      if you want to delete from firs or last node from linked list
-//      list.deleteFirst();
-//      list.display();
-//      list.deleteLast();
-//       list.display();
-        System.out.println(list.getsize());
-
-
+////      if you want to delete from firs or last node from linked list
+////      list.deleteFirst();
+////      list.display();
+////      list.deleteLast();
+////       list.display();
+//        System.out.println(list.getsize());
     }
 
 }
