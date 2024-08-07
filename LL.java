@@ -68,20 +68,45 @@ public class LL {
         }
         Node secondLastNode= head;
         Node lastNode= head.next;
-        while(lastNode.next != null){
+        while(lastNode.next != null) {
             lastNode= lastNode.next;
             secondLastNode= secondLastNode.next;
         }
         size --;                        //when delete my node at this time size also decrease in memory
-        if(head.next == null){
+        if(head.next == null) {
             head= null;
             return;
         }
         secondLastNode.next= null;
     }
 
-    public int getsize(){
+    public int getsize() {
         return size;
+    }
+    public void reverseIteration(){
+        if(head == null || head.next== null){
+            return;
+        }
+        Node headNode= head;
+        Node curNode= head.next;
+        while(curNode != null) {
+            Node nextNode= curNode.next;
+            curNode.next= headNode;
+            //update
+            headNode= curNode;
+            curNode= nextNode;
+        }
+        head.next= null;
+        head= headNode;
+    }
+    public Node reverseRecursive(Node head) {
+        if(head ==null || head.next == null) {
+            return head;
+        }
+        Node newNode= reverseRecursive(head.next);
+        head.next.next= head;
+        head.next= null;
+        return newNode;
     }
 
 
@@ -97,6 +122,10 @@ public class LL {
         list.addLast("List");
         list.display();
         list.deleteLast();
+        list.display();
+//        list.reverseIteration();
+//        list.display();
+        list.head= list.reverseRecursive(list.head);
         list.display();
 
 
